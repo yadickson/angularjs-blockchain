@@ -46,15 +46,7 @@
         var deferred = $q.defer();
 
         setTimeout(function() {
-
-          var count = 0;
-
-          if (vm.isConnected()) {
-            count = parseInt(vm.protocol.getBlockSize(), 10);
-          }
-
-          deferred.resolve(count);
-
+          deferred.resolve(arseInt(vm.protocol.getBlockSize(), 10));
         }, 200);
 
         return deferred.promise;
@@ -67,13 +59,11 @@
 
           var blocks = [];
 
-          if (vm.isConnected()) {
-            var blockNum = parseInt(vm.protocol.getBlockSize(), 10);
+          var blockNum = parseInt(vm.protocol.getBlockSize(), 10);
 
-            for (var i = 0; i < size; ++i) {
-              var number = vm.protocol.getBlock(blockNum - i).number;
-              blocks.push(number);
-            }
+          for (var i = 0; i < size && blockNum > 0; ++i) {
+            var number = vm.protocol.getBlock(blockNum - i).number;
+            blocks.push(number);
           }
 
           deferred.resolve(blocks);
@@ -87,13 +77,7 @@
         var deferred = $q.defer();
 
         setTimeout(function() {
-          var result = {};
-
-          if (vm.isConnected()) {
-            result = vm.protocol.getBlock(id);
-          }
-
-          deferred.resolve(result);
+          deferred.resolve(vm.protocol.getBlock(id));
         }, 200);
 
         return deferred.promise;
@@ -103,20 +87,51 @@
         var deferred = $q.defer();
 
         setTimeout(function() {
-          var result = null;
-
-          if (vm.isConnected()) {
-            result = vm.protocol.getDefaultAccount();
-          }
-
-          deferred.resolve(result);
+          deferred.resolve(vm.protocol.getDefaultAccount());
         }, 200);
 
         return deferred.promise;
       };
 
-      vm.loadContract = function(json) {
-        return vm.protocol.loadContract(json);
+      vm.getAccounts = function() {
+        var deferred = $q.defer();
+
+        setTimeout(function() {
+          deferred.resolve(vm.protocol.getAccounts());
+        }, 200);
+
+        return deferred.promise;
+      };
+
+      vm.getBalances = function() {
+        var deferred = $q.defer();
+
+        setTimeout(function() {
+          var accounts = vm.protocol.getAccounts();
+          var result = [];
+
+          angular.forEach(accounts, function(account) {
+            result.push({
+              "account": account,
+              "balance": vm.protocol.getBalance(account)
+            });
+          });
+
+          deferred.resolve(result);
+
+        }, 200);
+
+        return deferred.promise;
+      };
+
+      vm.getContract = function(abi, address) {
+        var deferred = $q.defer();
+
+        setTimeout(function() {
+          deferred.resolve(vm.protocol.getContract(abi, address));
+        }, 200);
+
+        return deferred.promise;
       };
 
       vm.disconnect = function() {

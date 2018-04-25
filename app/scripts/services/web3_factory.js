@@ -53,8 +53,14 @@
         getDefaultAccount: function() {
           return this.isConnected() ? web3.eth.coinbase : '';
         },
-        loadContract: function(json) {
-             return this.isConnected() ? web3.eth.contract(json).at(this.getDefaultAccount()) : null;
+        getAccounts: function() {
+          return this.isConnected() ? web3.eth.accounts : [];
+        },
+        getBalance: function(account) {
+          return this.isConnected() ? web3.fromWei(web3.eth.getBalance(account), "ether") : 0;
+        },
+        getContract: function(abi, address) {
+          return this.isConnected() ? web3.eth.contract(abi).at(address) : null;
         },
         disconnect: function() {
           if (this.isConnected()) {

@@ -6,9 +6,16 @@
 
 <body>
     <p class="text-center">This is the view accounts.</p>
-</body>
 
-<p>{{vm.defaultAccount}}</p>
-<p>{{vm.tokenContract}}</p>
+      <div class="container-fluid">
+        <p>Default: {{vm.defaultAccount}}</p>
+
+        <ul>
+          <li data-ng-repeat="b in vm.balances">{{b.account}}: {{b.balance}}</li>
+        </ul>
+
+      </div>
+
+</body>
 
 </html>

@@ -28,6 +28,7 @@
   var CONNECT_URL = "/connect";
   var BLOCKS_URL = "/blocks";
   var BLOCK_URL = "/block";
+  var CONTRACTS_URL = "/contracts";
 
   var MENU = [{
       "name": "Connect",
@@ -42,6 +43,11 @@
     {
       "name": "Account",
       "url": "/accounts",
+      "status": true
+    },
+    {
+      "name": "Contracts",
+      "url": CONTRACTS_URL,
       "status": true
     },
     {
@@ -61,6 +67,7 @@
     .constant('menu', MENU)
     .constant('connectUrl', CONNECT_URL)
     .constant('blocksUrl', BLOCKS_URL)
-    .constant('blockUrl', BLOCK_URL);
+    .constant('blockUrl', BLOCK_URL)
+    .constant('contractsUrl', CONTRACTS_URL);
 
 })();

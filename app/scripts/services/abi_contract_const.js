@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  var helloWorldContract = [{
-    "constant": false,
+  var abi = [{
+    "constant": true,
     "inputs": [],
     "name": "renderHelloWorld",
     "outputs": [{
@@ -10,17 +10,16 @@
       "type": "string"
     }],
     "payable": false,
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   }];
 
-
   /**
    * @ngdoc service
-   * @name blockchainModule.constant:helloWorldContract
+   * @name blockchainModule.constant:abiContract
    *
    * @description
-   * Description of the constant helloWorldContract
+   * Description of the constant abiContract
    *
    * @example
      <example module="blockchainModule">
@@ -32,14 +31,15 @@
          <file name="script.js">
              angular
                  .module('blockchainModule')
-                 .controller('SampleCtrl', ['helloWorldContract', function (helloWorldContract) {
-                      this.value = 'Hello constant helloWorldContract: ' + helloWorldContract;
+                 .controller('SampleCtrl', ['abiContract', function (abiContract) {
+                      this.value = 'Hello constant abiContract: ' + abiContract;
                  }]);
          </file>
      </example>
    */
   angular
     .module('blockchainModule')
-    .constant('helloWorldContract', helloWorldContract);
+    .constant('abiContract', abi)
+    .constant('addressContract', '0x5d459d25f23e249616253b2e3a2bde00579bdbd9');
 
 })();

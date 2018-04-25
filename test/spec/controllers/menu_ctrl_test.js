@@ -59,7 +59,7 @@
 
       it('should attach a list of menu to the scope', function() {
         expect(controller.menu).to.be.an('array');
-        expect(controller.menu).to.have.lengthOf(4);
+        expect(controller.menu).to.have.lengthOf(5);
       });
     });
 

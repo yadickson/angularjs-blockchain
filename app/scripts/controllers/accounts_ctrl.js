@@ -10,7 +10,7 @@
    */
   angular
     .module('blockchainModule')
-    .controller('AccountsCtrl', ['$location', 'ethereum', 'helloWorldContract', 'connectUrl', function($location, ethereum, helloWorldContract, connectUrl) {
+    .controller('AccountsCtrl', ['$location', 'ethereum', 'connectUrl', function($location, ethereum, connectUrl) {
 
       var vm = this;
 
@@ -21,18 +21,22 @@
       ];
 
       vm.defaultAccount = null;
-      vm.tokenContract = null;
+      vm.accounts = [];
+      vm.balances = [];
 
       if (ethereum.isConnected()) {
 
         ethereum.getDefaultAccount().then(function(result){
           vm.defaultAccount = result;
         });
-        /*
-        vm.tokenContract = ethereum.loadContract(helloWorldContract).renderHelloWorld.call(function(a, b) {
-          console.log('a', a);
-          console.log('b', b);
-        });*/
+
+        ethereum.getAccounts().then(function(result){
+          vm.accounts = result;
+        });
+
+        ethereum.getBalances().then(function(result){
+          vm.balances = result;
+        });
 
       } else {
         $location.path(connectUrl);

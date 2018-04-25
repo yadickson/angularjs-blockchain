@@ -15,7 +15,7 @@
       'ui.router',
       'ngCookies'
     ])
-    .config(['$stateProvider', '$urlRouterProvider', 'homeUrl', 'connectUrl', 'blocksUrl', function($stateProvider, $urlRouterProvider, homeUrl, connectUrl, blocksUrl) {
+    .config(['$stateProvider', '$urlRouterProvider', 'homeUrl', 'connectUrl', 'blocksUrl', 'contractsUrl', function($stateProvider, $urlRouterProvider, homeUrl, connectUrl, blocksUrl, contractsUrl) {
 
       $stateProvider
         .state('root', {
@@ -145,6 +145,22 @@
             'main@': {
               controller: 'TransactionCtrl',
               templateUrl: 'views/transaction.html',
+              controllerAs: 'vm'
+            }
+          }
+        })
+        .state('Contracts', {
+          parent: 'root',
+          url: contractsUrl,
+          views: {
+            'header@': {
+              controller: 'MenuCtrl',
+              templateUrl: 'views/menu.html',
+              controllerAs: 'vm'
+            },
+            'main@': {
+              controller: 'ContractsCtrl',
+              templateUrl: 'views/contracts.html',
               controllerAs: 'vm'
             }
           }

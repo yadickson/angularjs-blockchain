@@ -15,7 +15,7 @@
 
       it('Check value', function() {
         expect(MENU_CONST).to.be.an('array');
-        expect(MENU_CONST).to.have.lengthOf(5);
+        expect(MENU_CONST).to.have.lengthOf(6);
       });
     });
   });
@@ -55,5 +55,23 @@
       });
     });
   });
+
+    describe('Constant:contractsUrl', function() {
+      describe('Test module and constant', function() {
+
+        // load the module
+        beforeEach(angular.mock.module('blockchainModule'));
+
+        var CONTRACTS_URL_CONST;
+        // Initialize the service
+        beforeEach(inject(function(_contractsUrl_) {
+          CONTRACTS_URL_CONST = _contractsUrl_;
+        }));
+
+        it('Check value', function() {
+          expect(CONTRACTS_URL_CONST).to.be.equal('/contracts');
+        });
+      });
+    });
 
 })();
