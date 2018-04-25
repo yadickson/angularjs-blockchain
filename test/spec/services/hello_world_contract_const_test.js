@@ -14,7 +14,7 @@
             }));
 
             it('Check value', function() {
-                expect(HELLO_WORLD_CONTRACT_CONST).to.be.equal('HELLO_WORLD_CONTRACT_CONST');
+                expect(HELLO_WORLD_CONTRACT_CONST).to.be.an('array');;
             });
         });
     });

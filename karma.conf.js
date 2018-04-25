@@ -34,7 +34,6 @@ module.exports = function(config) {
             "app/scripts/services/web3_factory.js",
             "test/spec/main_test.js",
             "test/spec/services/hello_world_contract_const_test.js",
-            "test/spec/services/home_url_const_test.js",
             "test/spec/services/menu_const_test.js",
             "test/spec/services/ethereum_service_test.js",
             "test/spec/services/cookie_factory_test.js",
