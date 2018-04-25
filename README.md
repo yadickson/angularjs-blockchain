@@ -1,5 +1,5 @@
 # angularjs-blockchain
-> Proyecto para obtener informacion de un nodo ethereum
+> AngularJS Blockchain project to get information from ethereum node.
 
 
 [![TravisCI Status][travis-image]][travis-url]
