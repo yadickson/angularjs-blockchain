@@ -26,7 +26,7 @@
    */
   angular
     .module('blockchainModule')
-    .service('ethereum', ['$q', 'web3', 'cookie', function($q, web3, cookie) {
+    .service('ethereum', ['$q', 'web3', 'cookie', 'promiseTimeout', function($q, web3, cookie, promiseTimeout) {
       // AngularJS will instantiate a singleton by calling "new" on this function
 
       var vm = this;
@@ -42,96 +42,84 @@
         return vm.protocol.isConnected();
       };
 
-      vm.getBlockSize = function() {
-        var deferred = $q.defer();
+      vm.getBlockSizeSync = function() {
+        return parseInt(vm.protocol.getBlockSize(), 10);
+      };
 
-        setTimeout(function() {
-          deferred.resolve(parseInt(vm.protocol.getBlockSize(), 10));
-        }, 200);
+      vm.getBlocksSync = function(size) {
 
-        return deferred.promise;
+        var blocks = [];
+
+        var blockNum = vm.getBlockSizeSync();
+
+        for (var i = 0; i < size && blockNum > 0 && i < blockNum; ++i) {
+          var number = vm.protocol.getBlock(blockNum - i).number;
+          blocks.push(number);
+        }
+
+        return blocks;
       };
 
       vm.getBlocks = function(size) {
-        var deferred = $q.defer();
-
-        setTimeout(function() {
-
-          var blocks = [];
-
-          var blockNum = parseInt(vm.protocol.getBlockSize(), 10);
-
-          for (var i = 0; i < size && blockNum > 0; ++i) {
-            var number = vm.protocol.getBlock(blockNum - i).number;
-            blocks.push(number);
-          }
-
-          deferred.resolve(blocks);
-
-        }, 200);
-
-        return deferred.promise;
+        return $q(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(vm.getBlocksSync(size));
+          }, promiseTimeout);
+        });
       };
 
       vm.getBlock = function(id) {
-        var deferred = $q.defer();
-
-        setTimeout(function() {
-          deferred.resolve(vm.protocol.getBlock(id));
-        }, 200);
-
-        return deferred.promise;
+        return $q(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(vm.protocol.getBlock(id));
+          }, promiseTimeout);
+        });
       };
 
       vm.getDefaultAccount = function() {
-        var deferred = $q.defer();
-
-        setTimeout(function() {
-          deferred.resolve(vm.protocol.getDefaultAccount());
-        }, 200);
-
-        return deferred.promise;
+        return $q(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(vm.protocol.getDefaultAccount());
+          }, promiseTimeout);
+        });
       };
 
       vm.getAccounts = function() {
-        var deferred = $q.defer();
+        return $q(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(vm.protocol.getAccounts());
+          }, promiseTimeout);
+        });
+      };
 
-        setTimeout(function() {
-          deferred.resolve(vm.protocol.getAccounts());
-        }, 200);
+      vm.getAccountsSync = function() {
+        var accounts = vm.protocol.getAccounts();
+        var result = [];
 
-        return deferred.promise;
+        angular.forEach(accounts, function(account) {
+          result.push({
+            "account": account,
+            "balance": vm.protocol.getBalance(account)
+          });
+        });
+
+        return result;
       };
 
       vm.getBalances = function() {
-        var deferred = $q.defer();
-
-        setTimeout(function() {
-          var accounts = vm.protocol.getAccounts();
-          var result = [];
-
-          angular.forEach(accounts, function(account) {
-            result.push({
-              "account": account,
-              "balance": vm.protocol.getBalance(account)
-            });
-          });
-
-          deferred.resolve(result);
-
-        }, 200);
-
-        return deferred.promise;
+        return $q(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(vm.getAccountsSync());
+          }, promiseTimeout);
+        });
       };
 
       vm.getContract = function(abi, address) {
-        var deferred = $q.defer();
-
-        setTimeout(function() {
-          deferred.resolve(vm.protocol.getContract(abi, address));
-        }, 200);
-
-        return deferred.promise;
+        return $q(function(resolve, reject) {
+          setTimeout(function() {
+            resolve(vm.protocol.getContract(abi, address));
+          }, promiseTimeout);
+        });
       };
 
       vm.disconnect = function() {

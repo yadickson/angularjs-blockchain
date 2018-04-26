@@ -172,7 +172,7 @@
 
     }])
     .run(function($rootScope) {
-      console.log('main');
+
     });
 
 })();

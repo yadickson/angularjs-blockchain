@@ -36,7 +36,10 @@
       // Public API here
       return {
         someMethod: function() {
-          return name;
+          return vm.name;
+        },
+        setWeb3: function(web3) { //Only for stub
+          vm.web3 = web3;
         },
         connect: function(url) {
           vm.web3 = new Web3(new Web3.providers.HttpProvider(url));
