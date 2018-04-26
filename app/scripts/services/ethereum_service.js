@@ -46,7 +46,7 @@
         var deferred = $q.defer();
 
         setTimeout(function() {
-          deferred.resolve(arseInt(vm.protocol.getBlockSize(), 10));
+          deferred.resolve(parseInt(vm.protocol.getBlockSize(), 10));
         }, 200);
 
         return deferred.promise;

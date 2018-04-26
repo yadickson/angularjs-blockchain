@@ -40,6 +40,6 @@
   angular
     .module('blockchainModule')
     .constant('abiContract', abi)
-    .constant('addressContract', '0x5d459d25f23e249616253b2e3a2bde00579bdbd9');
+    .constant('addressContract', '0x03dff69b66e2989817b1ccf1f4e64a76c7918499');
 
 })();

@@ -1,27 +1,34 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    describe('Controller:DisconnectCtrl', function() {
-        describe('Test module and controller', function() {
+  describe('Controller:DisconnectCtrl', function() {
+    describe('Test module and controller', function() {
 
-            // load the module
-            beforeEach(angular.mock.module('blockchainModule'));
+      // load the module
+      beforeEach(angular.mock.module('blockchainModule'));
 
-            var controller,
-                scope;
+      var controller,
+        scope;
 
-            // Initialize the controller and a mock scope
-            beforeEach(inject(function($controller, $rootScope) {
-                scope = $rootScope.$new();
-                controller = $controller('DisconnectCtrl', {
-                    $scope: scope
-                        // place here mocked dependencies
-                });
-            }));
+      var mockEthereumService = {
+        isConnected: function() {
+          return false;
+        }
+      };
 
-            it('should attach a list of awesomeThings to the scope', function() {
-                expect(controller.value).to.be.equal('Hello controller DisconnectCtrl');
-            });
+      // Initialize the controller and a mock scope
+      beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
+        controller = $controller('DisconnectCtrl', {
+          $scope: scope,
+          ethereum: mockEthereumService
+          // place here mocked dependencies
         });
+      }));
+
+      it('should attach a list of awesomeThings to the scope', function() {
+        expect(controller.value).to.be.equal('Hello controller DisconnectCtrl');
+      });
     });
+  });
 })();
