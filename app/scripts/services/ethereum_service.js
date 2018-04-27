@@ -19,6 +19,7 @@
              angular
                  .module('blockchainModule')
                  .controller('SampleCtrl', ['ethereum', function (ethereum) {
+                      var vm = this;
                       vm.value = 'Hello factory ' + ethereum.name;
                  }]);
          </file>

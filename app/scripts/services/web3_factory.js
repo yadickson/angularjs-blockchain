@@ -10,14 +10,15 @@
    * @example
      <example module="blockchainModule">
          <file name="index.html">
-            <div data-ng-controller='SampleCtrl'>
-              {{value}}
+            <div data-ng-controller='SampleCtrl as sample'>
+              {{sample.value}}
             </div>
          </file>
          <file name="script.js">
              angular
-                 .module('blockchainModule', [])
+                 .module('blockchainModule')
                  .controller('SampleCtrl', ['web3', function (web3) {
+                      var vm = this;
                       vm.value = 'Hello factory ' + web3.someMethod();
                  }]);
          </file>

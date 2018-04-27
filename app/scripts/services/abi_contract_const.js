@@ -32,7 +32,7 @@
              angular
                  .module('blockchainModule')
                  .controller('SampleCtrl', ['abiContract', function (abiContract) {
-                      this.value = 'Hello constant abiContract: ' + abiContract;
+                      this.value = 'Hello constant abiContract: ' + JSON.stringify(abiContract);
                  }]);
          </file>
      </example>
@@ -40,6 +40,6 @@
   angular
     .module('blockchainModule')
     .constant('abiContract', abi)
-    .constant('addressContract', '0x03dff69b66e2989817b1ccf1f4e64a76c7918499');
+    .constant('addressContract', '0xaec77c04c6b4fe1b9b8e572310d867d52576b0c6');
 
 })();

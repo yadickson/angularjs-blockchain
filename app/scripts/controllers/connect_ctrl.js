@@ -28,6 +28,8 @@
 
         if (connect) {
           $location.path(homeUrl);
+        } else {
+          swal("No es posible conectarse con el nodo", "", "error");
         }
 
       };

@@ -19,12 +19,13 @@
              angular
                  .module('blockchainModule')
                  .controller('SampleCtrl', ['menu', function (menu) {
-                      this.value = 'Hello constant menu: ' + menu;
+                      this.value = 'Hello constant menu size: ' + menu.length;
                  }]);
          </file>
      </example>
    */
 
+  var HOME_URL = "/home";
   var CONNECT_URL = "/connect";
   var BLOCKS_URL = "/blocks";
   var BLOCK_URL = "/block";
@@ -65,6 +66,7 @@
   angular
     .module('blockchainModule')
     .constant('menu', MENU)
+    .constant('homeUrl', HOME_URL)
     .constant('connectUrl', CONNECT_URL)
     .constant('blocksUrl', BLOCKS_URL)
     .constant('blockUrl', BLOCK_URL)
