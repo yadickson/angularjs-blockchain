@@ -32,7 +32,6 @@
         "karma": "^1.7.1"
     },
     "scripts": {
-        "docs": "gulp docs",
         "clean": "gulp clean",
         "test": "gulp test",
         "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"

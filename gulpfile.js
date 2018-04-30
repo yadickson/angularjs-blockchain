@@ -3,7 +3,6 @@
 let addpaths = [
   'node_modules/angular/angular.js',
   'node_modules/angular-animate/angular-animate.js',
-  'node_modules/angular-route/angular-route.js',
   'node_modules/angular-cookies/angular-cookies.js',
   'node_modules/bootstrap/**/bootstrap.js',
   'node_modules/web3/dist/web3.js',
@@ -56,4 +55,4 @@ options = {
 };
 
 let gulp = require("gulp-ajsweb")(require('gulp'), options);
-gulp.task('default', false, ['help'], () => {});
+gulp.task('default', ['help'], () => {});

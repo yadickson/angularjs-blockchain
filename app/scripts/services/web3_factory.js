@@ -26,51 +26,47 @@
    */
   angular
     .module('blockchainModule')
-    .factory('web3', ['$cookieStore', function() {
+    .factory('web3', ['web3js', function(web3js) {
       // Service logic
       // ...
       var vm = this;
 
       vm.name = 'web3Factory';
-      vm.web3 = null;
 
       // Public API here
       return {
         someMethod: function() {
           return vm.name;
         },
-        setWeb3: function(web3) { //Only for stub
-          vm.web3 = web3;
-        },
         connect: function(url) {
-          vm.web3 = new Web3(new Web3.providers.HttpProvider(url));
+          web3js = new Web3(new Web3.providers.HttpProvider(url));
           return this.isConnected();
         },
         isConnected: function() {
-          return vm.web3 === null ? false : vm.web3.isConnected();
+          return web3js === null ? false : web3js.isConnected();
         },
         getBlockSize: function() {
-          return this.isConnected() ? vm.web3.eth.blockNumber : 0;
+          return this.isConnected() ? web3js.eth.blockNumber : 0;
         },
         getBlock: function(id) {
-          return this.isConnected() ? vm.web3.eth.getBlock(id) : {};
+          return this.isConnected() ? web3js.eth.getBlock(id) : {};
         },
         getDefaultAccount: function() {
-          return this.isConnected() ? vm.web3.eth.coinbase : '';
+          return this.isConnected() ? web3js.eth.coinbase : '';
         },
         getAccounts: function() {
-          return this.isConnected() ? vm.web3.eth.accounts : [];
+          return this.isConnected() ? web3js.eth.accounts : [];
         },
         getBalance: function(account) {
-          return this.isConnected() ? vm.web3.fromWei(vm.web3.eth.getBalance(account), "ether") : 0;
+          return this.isConnected() ? web3js.fromWei(web3js.eth.getBalance(account), "ether") : 0;
         },
         getContract: function(abi, address) {
-          return this.isConnected() ? vm.web3.eth.contract(abi).at(address) : null;
+          return this.isConnected() ? web3js.eth.contract(abi).at(address) : null;
         },
         disconnect: function() {
           if (this.isConnected()) {
-            vm.web3.reset();
-            vm.web3 = null;
+            web3js.reset();
+            web3js = null;
           }
         }
       };
