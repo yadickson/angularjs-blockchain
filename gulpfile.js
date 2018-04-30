@@ -1,6 +1,4 @@
-// generated on 2018-04-23 using generator-ajsweb 1.4.16
-
-const gulp = require('gulp');
+// generated on 2018-04-23 using generator-ajsweb 1.6.0
 
 let addpaths = [
   'node_modules/angular/angular.js',
@@ -53,9 +51,9 @@ options = {
   addcss: addcss,
   addscss: addscss,
   addfonts: addfonts,
-  orderBy: orderBy
+  orderBy: orderBy,
+  port: 9100
 };
 
-const ajsweb = require("gulp-ajsweb")(gulp, options);
-
-gulp.task('default', ['build'], () => {});
+let gulp = require("gulp-ajsweb")(require('gulp'), options);
+gulp.task('default', false, ['help'], () => {});
