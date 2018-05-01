@@ -8,6 +8,8 @@
    * @description
    * Description of the controller BlockCtrl
    *
+   * @requires ../main.js
+   *
    * @example
       <example module="blockchainModule">
           <file name="index.html">

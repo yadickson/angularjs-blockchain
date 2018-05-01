@@ -8,6 +8,11 @@
    * @description
    * Description of the controller ContractsCtrl
    *
+   * @requires ../main.js
+   * @requires ../services/ethereum_service.js
+   * @requires ../services/menu_const.js
+   * @requires ../services/abi_contract_const.js
+   *
    * @example
       <example module="blockchainModule">
           <file name="index.html">

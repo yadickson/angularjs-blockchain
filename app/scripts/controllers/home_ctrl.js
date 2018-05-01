@@ -7,6 +7,9 @@
    *
    * @description
    * Description of the controller HomeCtrl
+   *
+   * @requires ../main.js
+   *
    * @example
       <example module="blockchainModule">
           <file name="index.html">

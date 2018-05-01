@@ -8,6 +8,10 @@
    * @description
    * Description of the controller TransactionCtrl
    *
+   * @requires ../main.js
+   * @requires ../services/ethereum_service.js
+   * @requires ../services/menu_const.js
+   *
    * @example
       <example module="blockchainModule">
           <file name="index.html">

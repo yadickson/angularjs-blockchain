@@ -7,6 +7,11 @@
    *
    * @description
    * Description of the controller AccountsCtrl
+   *
+   * @requires ../main.js
+   * @requires ../services/ethereum_service.js
+   * @requires ../services/menu_const.js
+   *
    */
   angular
     .module('blockchainModule')

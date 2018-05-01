@@ -7,6 +7,9 @@
    *
    * @description
    * Description of the controller ConnectCtrl
+   *
+   * @requires ../main.js
+   *
    */
   angular
     .module('blockchainModule')

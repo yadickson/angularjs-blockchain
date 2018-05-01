@@ -8,6 +8,10 @@
    * @description
    * Description of the service ethereum
    *
+   * @requires ../services/web3_factory.js
+   * @requires ../services/cookie_factory.js
+   * @requires ../services/promise_timeout_const.js
+   *
    * @example
      <example module="blockchainModule">
          <file name="index.html">

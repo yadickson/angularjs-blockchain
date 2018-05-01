@@ -7,6 +7,9 @@
    *
    * @description
    * Description of the factory web3
+   *
+   * @requires ../services/web3js_value.js
+   *
    * @example
      <example module="blockchainModule">
          <file name="index.html">
