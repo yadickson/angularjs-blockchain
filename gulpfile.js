@@ -1,12 +1,7 @@
 // generated on 2018-04-23 using generator-ajsweb 1.6.0
 
 let addpaths = [
-  'node_modules/angular/angular.js',
-  'node_modules/angular-animate/angular-animate.js',
-  'node_modules/angular-cookies/angular-cookies.js',
-  'node_modules/bootstrap/**/bootstrap.js',
-  'node_modules/web3/dist/web3.js',
-  'node_modules/sweetalert/dist/sweetalert.min.js'
+  'node_modules/bootstrap/**/bootstrap.js'
 ];
 
 let addtestpaths = [
@@ -14,12 +9,7 @@ let addtestpaths = [
 ];
 
 let excludepaths = [
-  '!node_modules/angular/index.js',
-  '!node_modules/angular-animate/index.js',
-  '!node_modules/angular-cookies/index.js',
-  '!node_modules/angular-route/index.js',
-  '!node_modules/sweetalert/lib/sweetalert.js',
-  '!node_modules/web3/index.js'
+  // '!node_modules/project/index.js'
 ];
 
 let addcss = [
@@ -34,16 +24,19 @@ let addfonts = [
 
 ];
 
-let orderBy = [
-  '**/jquery.js',
-  '**/angular.js',
-  '**/angular-*.js',
-  '**/bootstrap.js',
-  '**/bootstrap-*.js',
-  '*'
+let notprocess = [
+   'jquery'
 ];
 
-options = {
+let orderBy = [
+  'jquery.js',
+  'angular.js',
+  'angular-*.js',
+  'bootstrap.js',
+  'bootstrap-*.js'
+];
+
+let options = {
   addpaths: addpaths,
   addtestpaths: addtestpaths,
   excludepaths: excludepaths,
@@ -51,6 +44,8 @@ options = {
   addscss: addscss,
   addfonts: addfonts,
   orderBy: orderBy,
+  notprocess: notprocess,
+  browser: 'firefox',
   port: 9100
 };
 
