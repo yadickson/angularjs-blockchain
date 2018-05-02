@@ -51,7 +51,7 @@
                 at: function(address) {
                   return address;
                 }
-              }
+              };
             }
           }
         };
