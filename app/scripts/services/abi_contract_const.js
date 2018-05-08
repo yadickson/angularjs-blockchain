@@ -2,54 +2,17 @@
   'use strict';
 
   var abi = [{
-      "inputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "render",
-      "outputs": [{
-        "name": "",
-        "type": "string"
-      }],
-      "payable": false,
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [{
-        "name": "a",
-        "type": "uint256"
-      }],
-      "name": "add",
-      "outputs": [{
-        "name": "",
-        "type": "uint256"
-      }],
-      "payable": false,
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [{
-        "name": "who",
-        "type": "bytes"
-      }],
-      "name": "greeting",
-      "outputs": [{
-        "name": "",
-        "type": "string"
-      }],
-      "payable": false,
-      "stateMutability": "pure",
-      "type": "function"
-    }
-  ];
+    "constant": true,
+    "inputs": [],
+    "name": "render",
+    "outputs": [{
+      "name": "",
+      "type": "string"
+    }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  }];
 
   /**
    * @ngdoc service
@@ -77,6 +40,6 @@
   angular
     .module('blockchainModule')
     .constant('abiContract', abi)
-    .constant('addressContract', '0xd83200179b95e08557a17115d67315baf86f647f');
+    .constant('addressContract', '0x524beb82c09499ee1bccce324a40e8743dc38f11');
 
 })();
