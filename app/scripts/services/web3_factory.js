@@ -63,6 +63,12 @@
         getBalance: function(account) {
           return this.isConnected() ? web3js.fromWei(web3js.eth.getBalance(account), "ether") : 0;
         },
+        fromAscii: function(text) {
+          return this.isConnected() ? web3js.fromAscii(text) : null;
+        },
+        toAscii: function(bytes) {
+          return this.isConnected() ? web3js.toAscii(bytes) : null;
+        },
         getContract: function(abi, address) {
           return this.isConnected() ? web3js.eth.contract(abi).at(address) : null;
         },

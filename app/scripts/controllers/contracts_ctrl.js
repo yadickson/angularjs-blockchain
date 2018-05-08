@@ -29,11 +29,15 @@
       var vm = this;
       vm.value = 'Hello controller ContractsCtrl';
       vm.message = null;
+      vm.greeting = null;
+      vm.add = null;
 
       if (ethereum.isConnected()) {
 
         ethereum.getContract(abiContract, addressContract).then(function(contract) {
-          vm.message = contract.renderHelloWorld.call();
+          vm.message = contract.render();
+          vm.add = contract.add(10);
+          vm.greeting = contract.greeting('crazy man');
         });
 
       } else {

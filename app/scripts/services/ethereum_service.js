@@ -119,6 +119,14 @@
         });
       };
 
+      vm.fromAscii = function(text) {
+        return vm.protocol.fromAscii(text);
+      };
+
+      vm.toAscii = function(bytes) {
+        return vm.protocol.toAscii(bytes);
+      };
+
       vm.getContract = function(abi, address) {
         return $q(function(resolve, reject) {
           setTimeout(function() {
