@@ -13,7 +13,7 @@ let excludepaths = [
 ];
 
 let addcss = [
-  'node_modules/sweetalert/dist/sweetalert.css'
+  // 'node_modules/project/file.css'
 ];
 
 let addscss = [
